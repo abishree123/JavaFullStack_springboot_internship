@@ -15,4 +15,50 @@ public class StudentService {
     public List<Student> getAllStudents(){
         return r.findAll();
     }
+
+    public String addStudent(Student std) {
+        r.save(std);
+        return "Successful";
+    }
+
+    public Student getStudentByRoll(int roll) {
+        return  r.findById(roll).orElse(new Student());
+    }
+
+    public String updateStudent(Student std) {
+        r.save(std);
+        return "Update Successful";
+    }
+
+    public String deleteStudent(int roll) {
+        r.deleteById(roll);
+        return "Successful";
+    }
+
+    public String deleteAll() {
+        r.deleteAll();
+        return "All Students deleted";
+    }
+
+    //custom method
+    public List<Student> getAllStudentsByTech(String tech) {
+        return r.findByTech(tech);
+    }
+
+    public List<Student> getAllStudentsByRnoAndTech(int rno , String tech ){
+         return r.findByRnoAndTech(rno,tech);
+    }
+
+    public List<Student> getStudentByTech(String tech) {
+        return r.findByTech(tech);
+    }
+
+    public List<Student> getAllStudentsByNameAndTech(String name, String tech) {
+        return r.findByNameAndTech(name,tech);
+    }
+
+    //jpl
+    public List<Student> getstudentbyjpql(String name) {
+        return r.findbyName(name);
+    }
 }
